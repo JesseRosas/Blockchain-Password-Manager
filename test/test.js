@@ -40,7 +40,7 @@ describe("PasswordKeychain", function () {
         // Add an initial entry
         const service = "Twitter";
         const username = "owner123";
-        const originalPassword = "0x7375706572536563726574313233"; // "superSecret123"
+        const originalPassword = "0x7375706572536563726574313233";
 
         await contract.connect(owner).addEntry(service, username, originalPassword);
 
@@ -48,7 +48,7 @@ describe("PasswordKeychain", function () {
         const originalTimestamp = entriesBefore[0].timestamp;
 
         // Update the entry
-        const newPassword = "0x6e657750617373776f7264313233"; // "newPassword123"
+        const newPassword = "0x6e657750617373776f7264313233";
         const tx = await contract.connect(owner).updateEntry(0, newPassword);
         await tx.wait();
 
@@ -56,8 +56,8 @@ describe("PasswordKeychain", function () {
 
         // Verify that the password and timestamp were updated
         expect(entriesAfter[0].encryptedPassword).to.equal(newPassword);
-        expect(entriesAfter[0].service).to.equal(service); // unchanged
-        expect(entriesAfter[0].username).to.equal(username); // unchanged
+        expect(entriesAfter[0].service).to.equal(service);
+        expect(entriesAfter[0].username).to.equal(username);
         expect(entriesAfter[0].timestamp).to.be.greaterThan(originalTimestamp);
     });
 
@@ -71,8 +71,8 @@ describe("PasswordKeychain", function () {
         const [owner] = await ethers.getSigners();
 
         // Add two entries
-        const entry1 = { service: "Twitter", username: "user1", password: "0x73757065725331" }; // "superS1"
-        const entry2 = { service: "Facebook", username: "user2", password: "0x73757065724632" }; // "superF2"
+        const entry1 = { service: "Twitter", username: "user1", password: "0x73757065725331" };
+        const entry2 = { service: "Facebook", username: "user2", password: "0x73757065724632" };
 
         await contract.connect(owner).addEntry(entry1.service, entry1.username, entry1.password);
         await contract.connect(owner).addEntry(entry2.service, entry2.username, entry2.password);
@@ -127,8 +127,8 @@ describe("PasswordKeychain", function () {
 
     // Add entries for user1
     const entriesUser1 = [
-        { service: "Twitter", username: "user1", password: "0x61737331" }, // "ass1"
-        { service: "Facebook", username: "user1_fb", password: "0x62626232" } // "bbb2"
+        { service: "Twitter", username: "user1", password: "0x61737331" },
+        { service: "Facebook", username: "user1_fb", password: "0x62626232" }
     ];
 
     for (const e of entriesUser1) {
@@ -136,7 +136,7 @@ describe("PasswordKeychain", function () {
     }
 
     // Add entries for user2
-    await contract.connect(user2).addEntry("Instagram", "user2_insta", "0x63636333"); // "ccc3"
+    await contract.connect(user2).addEntry("Instagram", "user2_insta", "0x63636333");
 
     // Retrieve entries for user1
     const user1Stored = await contract.connect(user1).getMyEntries();
@@ -175,7 +175,7 @@ describe("PasswordKeychain", function () {
 
     const service = "Twitter";
     const username = "user1";
-    const password = "0x61737331"; // "ass1"
+    const password = "0x61737331";
 
     await contract.connect(user).addEntry(service, username, password);
     await contract.connect(user).addEntry(service, username, password);
@@ -195,7 +195,7 @@ describe("PasswordKeychain", function () {
     for (let i = 0; i < 20; i++) {
         const service = `Service${i}`;
         const username = `User${i}`;
-        const password = "0x61"; // "a"
+        const password = "0x61";
         await contract.connect(user).addEntry(service, username, password);
     }
 
@@ -217,7 +217,7 @@ describe("PasswordKeychain", function () {
         await contract.connect(user1).addEntry(
             "Twitter",
             "user1_account",
-            "0x61737331" // "ass1"
+            "0x61737331"
         );
 
         // User2 tries to read User1's entries
@@ -226,7 +226,7 @@ describe("PasswordKeychain", function () {
 
         // User2 tries to update User1's entry (should fail)
         await expect(
-            contract.connect(user2).updateEntry(0, "0x62626232") // "bbb2"
+            contract.connect(user2).updateEntry(0, "0x62626232")
         ).to.be.revertedWith("Invalid index");
 
         // User2 tries to delete User1's entry (should fail)
