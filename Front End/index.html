@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js">    
+    </script>
+</head>
+<body>
+    
+    <div class="container">
+        <header>
+            <h1>TOWSON UNIVERSITY</h1>
+            <h3>BLOCKCHAIN PASSWORD MANAGER</h3>
+        </header>
+
+        <div class="card">
+            <button id="connectBtn">Connect Wallet</button>
+            <p id="walletAddress"></p>
+        </div>
+
+        <section class="card">
+            <h3>Add New Entry</h3>
+            <input type="text" id="serviceInput" placeholder="Site (example.com)">
+            <input type="text" id="usernameInput" placeholder="Username">
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button id="addBtn">Hash & Store on Chain</button>
+        </section>
+
+        <section class="card">
+            <h3>Passwords</h3>
+            <button id="refreshBtn">Load My Entries</button>
+            <div id="entriesList"></div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
