@@ -11,6 +11,10 @@ body {
     width: 100%;
     max-width: 500px;
     padding: 20px;
+    border: 5px solid #FFBB00;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #fff;
 }
 
 header {
@@ -48,11 +52,78 @@ button {
     font-weight: bold;
     cursor: pointer;
     border-radius: 4px;
-    transition: background 0.3s;
+    transition: background 0.3s, color 0.3s;
 }
 
 button:hover {
     background-color: #e5a900;
+}
+
+.password-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.password-row input {
+    flex: 1;
+    margin: 0;
+    width: auto;
+}
+
+.generate-btn {
+    width: auto;
+    flex-shrink: 0;
+    padding: 10px 14px;
+    background-color: #000;
+    color: #FFBB00;
+    font-size: 0.82em;
+    white-space: nowrap;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.generate-btn:hover {
+    background-color: #222;
+}
+
+.copy-btn {
+    background-color: #333;
+}
+
+.copy-btn:hover {
+    background-color: #555;
+}
+
+.strength-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 6px 0 12px;
+}
+
+.strength-track {
+    flex: 1;
+    height: 6px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 3px;
+    transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.strength-label {
+    font-size: 0.78em;
+    font-weight: bold;
+    min-width: 72px;
+    text-align: right;
+    transition: color 0.4s ease;
 }
 
 .entry-item {
@@ -65,12 +136,4 @@ button:hover {
     font-size: 0.8em;
     color: #667;
     word-break: break-all;
-}
-
-
-.container {
-    border: 5px solid #FFBB00;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: #fff;
 }
