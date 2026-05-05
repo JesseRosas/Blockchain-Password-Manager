@@ -5,12 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Manager</title>
-
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.7.0/dist/ethers.umd.min.js"></script>
 </head>
 <body>
-    
+
     <div class="container">
         <header>
             <h1>TOWSON UNIVERSITY</h1>
@@ -26,8 +25,22 @@
             <h3>Add New Entry</h3>
             <input type="text" id="serviceInput" placeholder="Site (example.com)">
             <input type="text" id="usernameInput" placeholder="Username">
-            <input type="password" id="passwordInput" placeholder="Password">
-            <button id="addBtn">Encrypt & Store on Chain</button>
+
+            <div class="password-row">
+                <input type="password" id="passwordInput" placeholder="Password">
+                <button id="generateBtn" class="generate-btn">⚡ Generate</button>
+                <button id="copyBtn" class="generate-btn copy-btn" title="Copy password to clipboard">⧉ Copy</button>
+            </div>
+
+            <!-- Strength meter -->
+            <div class="strength-wrapper">
+                <div class="strength-track">
+                    <div id="strengthBar" class="strength-bar"></div>
+                </div>
+                <span id="strengthLabel" class="strength-label"></span>
+            </div>
+
+            <button id="addBtn">Encrypt &amp; Store on Chain</button>
         </section>
 
         <section class="card">
@@ -37,6 +50,6 @@
         </section>
     </div>
 
-    <script src="App.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
